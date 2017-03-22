@@ -19,9 +19,9 @@ class ProcessStillTask implements Runnable {
 
     @Override
     public void run() {
-        Camera.Parameters parameters = camera.getParameters();
-        int width = parameters.getPreviewSize().width;
-        int height = parameters.getPreviewSize().height;
+        Camera.Parameters params = camera.getParameters();
+        int width = params.getPreviewSize().width;
+        int height = params.getPreviewSize().height;
         int rotation = cameraInfo.orientation;
         byte[] rotatedData = new Rotation(data, width, height, rotation).getYuv();
 
@@ -43,7 +43,7 @@ class ProcessStillTask implements Runnable {
                 break;
         }
 
-        YuvImage yuv = new YuvImage(rotatedData, parameters.getPreviewFormat(), postWidth, postHeight, null);
+        YuvImage yuv = new YuvImage(rotatedData, params.getPreviewFormat(), postWidth, postHeight, null);
 
         onStillProcessedListener.onStillProcessed(yuv);
     }

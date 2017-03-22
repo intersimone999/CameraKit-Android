@@ -44,10 +44,10 @@ public class CenterCrop {
     }
 
     private static Rect getCrop(int currentWidth, int currentHeight, AspectRatio targetRatio) {
-        AspectRatio currentRatio = AspectRatio.of(currentWidth, currentHeight);
+        AspectRatio aspectRatio = AspectRatio.of(currentWidth, currentHeight);
 
         Rect crop;
-        if (currentRatio.toFloat() > targetRatio.toFloat()) {
+        if (aspectRatio.toFloat() > targetRatio.toFloat()) {
             int width = (int) (currentHeight * targetRatio.toFloat());
             int widthOffset = (currentWidth - width) / 2;
             crop = new Rect(widthOffset, 0, currentWidth - widthOffset, currentHeight);

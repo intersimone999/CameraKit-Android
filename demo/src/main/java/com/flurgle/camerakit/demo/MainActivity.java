@@ -314,8 +314,8 @@ public class MainActivity extends AppCompatActivity implements View.OnLayoutChan
     }
 
     @OnTouch(R.id.focusMarker)
-    boolean onTouchCamera(View view, MotionEvent motionEvent) {
-        focusMarker.focus(motionEvent.getX(), motionEvent.getY());
+    boolean onTouchCamera(View view, MotionEvent event) {
+        focusMarker.focus(event.getX(), event.getY());
         return false;
     }
 
